@@ -314,6 +314,722 @@
 // };
 // export default ContactSection;
 
+// import React, { useState } from "react";
+// import FadeIn from "./FadeIn";
+// import {
+//   Shield,
+//   Send,
+//   Mail,
+//   GitBranch,
+//   Users,
+//   ArrowRight,
+//   Phone,
+//   Activity,
+//   CheckCircle,
+// } from "lucide-react";
+// import { motion, AnimatePresence } from "framer-motion";
+
+// // --- BACKEND SCOPE PREPARATION ---
+// // Later, replace this static object with state populated by your Django API
+// const contactData = {
+//   status: "Accepting Direct Connections",
+//   email: "ansarimohammed122@gmail.com",
+//   phone: "+91 9326797184",
+//   github: "https://github.com", // Replace with your actual GitHub link later
+//   linkedin: "https://www.linkedin.com/in/mohammed-ansari-690524266",
+// };
+
+// const KineticInput = ({
+//   label,
+//   id,
+//   type = "text",
+//   value,
+//   onChange,
+//   isTextArea,
+//   placeholder,
+// }) => {
+//   const [focused, setFocused] = useState(false);
+
+//   return (
+//     <div className="relative mb-8 font-mono">
+//       <div className="flex justify-between items-end mb-2">
+//         <label
+//           className={`text-[10px] tracking-[0.2em] transition-colors duration-300 uppercase ${focused ? "text-[var(--md-sys-color-primary)]" : "text-[var(--md-sys-color-on-surface-variant)]"}`}
+//         >
+//           {label} {focused && <span className="animate-pulse">_</span>}
+//         </label>
+//         {focused && (
+//           <span className="text-[9px] text-[var(--md-sys-color-primary)] opacity-60 uppercase tracking-widest">
+//             [{value.length} / 256 BYTES]
+//           </span>
+//         )}
+//       </div>
+
+//       <div className="relative group">
+//         <div
+//           className={`absolute -top-1.5 -left-1.5 w-3 h-3 border-t-2 border-l-2 transition-all duration-300 ${focused ? "border-[var(--md-sys-color-primary)] scale-100 opacity-100" : "border-[var(--md-sys-color-outline-variant)] opacity-0 scale-150"}`}
+//         />
+//         <div
+//           className={`absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-2 border-r-2 transition-all duration-300 ${focused ? "border-[var(--md-sys-color-primary)] scale-100 opacity-100" : "border-[var(--md-sys-color-outline-variant)] opacity-0 scale-150"}`}
+//         />
+
+//         {isTextArea ? (
+//           <textarea
+//             id={id}
+//             value={value}
+//             onChange={onChange}
+//             onFocus={() => setFocused(true)}
+//             onBlur={() => setFocused(false)}
+//             className="w-full bg-[var(--md-sys-color-surface-variant)] border border-transparent text-[var(--md-sys-color-on-surface)] text-sm px-4 py-4 focus:outline-none transition-colors duration-300 placeholder-[var(--md-sys-color-on-surface-variant)] opacity-80"
+//             placeholder={placeholder}
+//             rows={4}
+//             spellCheck="false"
+//           />
+//         ) : (
+//           <input
+//             id={id}
+//             type={type}
+//             value={value}
+//             onChange={onChange}
+//             onFocus={() => setFocused(true)}
+//             onBlur={() => setFocused(false)}
+//             className="w-full bg-[var(--md-sys-color-surface-variant)] border border-transparent text-[var(--md-sys-color-on-surface)] text-sm px-4 py-3 focus:outline-none transition-colors duration-300 placeholder-[var(--md-sys-color-on-surface-variant)] opacity-80"
+//             placeholder={placeholder}
+//             spellCheck="false"
+//           />
+//         )}
+
+//         <div className="absolute bottom-0 left-0 h-[2px] bg-[var(--md-sys-color-outline-variant)] w-full overflow-hidden">
+//           <motion.div
+//             className="h-full bg-[var(--md-sys-color-primary)] shadow-[0_0_8px_var(--md-sys-color-primary)]"
+//             initial={{ width: 0 }}
+//             animate={{
+//               width: `${Math.min((value.length / (isTextArea ? 150 : 30)) * 100, 100)}%`,
+//             }}
+//             transition={{ ease: "easeOut", duration: 0.2 }}
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// const ContactSection = () => {
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     message: "",
+//   });
+//   const [status, setStatus] = useState("IDLE"); // IDLE, TRANSMITTING, DELIVERED
+//   const [log, setLog] = useState([]);
+
+//   const handleTransmit = (e) => {
+//     e.preventDefault();
+//     if (!formData.name || !formData.email || !formData.message) return;
+
+//     setStatus("TRANSMITTING");
+//     setLog([
+//       "> INITIALIZING SECURE UPLINK...",
+//       "> GENERATING 2048-BIT ENCRYPTION KEY...",
+//     ]);
+
+//     setTimeout(() => {
+//       setLog((prev) => [
+//         ...prev,
+//         "> KEY SECURED.",
+//         "> PACKAGING DATA PAYLOAD...",
+//       ]);
+
+//       setTimeout(() => {
+//         setLog((prev) => [
+//           ...prev,
+//           "> UPLOADING TO SECURE SERVER...",
+//           "[||||||||||||||||||||] 100%",
+//         ]);
+
+//         setTimeout(() => {
+//           setStatus("DELIVERED");
+//           setLog((prev) => [
+//             ...prev,
+//             "> TRANSMISSION COMPLETE.",
+//             "> CONNECTION TERMINATED.",
+//           ]);
+
+//           setTimeout(() => {
+//             setStatus("IDLE");
+//             setLog([]);
+//             setFormData({ name: "", email: "", message: "" });
+//           }, 4000);
+//         }, 1500);
+//       }, 1500);
+//     }, 1500);
+//   };
+
+//   const socialLinks = [
+//     {
+//       name: "Global_Mail_Protocol",
+//       desc: contactData.email,
+//       icon: Mail,
+//       url: `mailto:${contactData.email}`,
+//     },
+//     {
+//       name: "Direct_Comms_Link",
+//       desc: contactData.phone,
+//       icon: Phone,
+//       url: `tel:${contactData.phone.replace(/\s/g, "")}`,
+//     },
+//     {
+//       name: "Source_Code_Vault",
+//       desc: "Access public repositories",
+//       icon: GitBranch,
+//       url: contactData.github,
+//     },
+//     {
+//       name: "Professional_Network",
+//       desc: "Establish business sync",
+//       icon: Users,
+//       url: contactData.linkedin,
+//     },
+//   ];
+
+//   return (
+//     <section id="contact" className="scroll-mt-28 sm:scroll-mt-24 pb-20">
+//       <FadeIn>
+//         <div className="flex items-center gap-3 mb-8">
+//           <Shield className="w-8 h-8 text-[var(--md-sys-color-primary)]" />
+//           <h2 className="text-3xl font-bold uppercase tracking-widest">
+//             Secure Uplink
+//           </h2>
+//         </div>
+//       </FadeIn>
+
+//       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+//         <FadeIn className="lg:col-span-7">
+//           <div className="bg-[var(--md-sys-color-surface)] border border-[var(--md-sys-color-outline-variant)] rounded-2xl overflow-hidden shadow-xl">
+//             <div className="h-12 bg-[var(--md-sys-color-surface-variant)] border-b border-[var(--md-sys-color-outline-variant)] flex items-center px-4 justify-between font-mono text-[10px] text-[var(--md-sys-color-on-surface-variant)] uppercase tracking-widest select-none">
+//               <div className="flex gap-2">
+//                 <span className="w-3 h-3 rounded-full bg-red-500/50"></span>
+//                 <span className="w-3 h-3 rounded-full bg-yellow-500/50"></span>
+//                 <span className="w-3 h-3 rounded-full bg-green-500/50"></span>
+//               </div>
+//               <span>Terminal_Port_001</span>
+//             </div>
+
+//             <div className="p-6 sm:p-10 relative min-h-[420px]">
+//               <AnimatePresence mode="wait">
+//                 {status === "IDLE" ? (
+//                   <motion.form
+//                     key="form"
+//                     initial={{ opacity: 0 }}
+//                     animate={{ opacity: 1 }}
+//                     exit={{ opacity: 0 }}
+//                     onSubmit={handleTransmit}
+//                     className="flex flex-col h-full"
+//                   >
+//                     <KineticInput
+//                       label="Target_ID (Name)"
+//                       id="name"
+//                       value={formData.name}
+//                       onChange={(e) =>
+//                         setFormData({ ...formData, name: e.target.value })
+//                       }
+//                       placeholder="Enter identification..."
+//                     />
+//                     <KineticInput
+//                       label="Return_Frequency (Email)"
+//                       id="email"
+//                       type="email"
+//                       value={formData.email}
+//                       onChange={(e) =>
+//                         setFormData({ ...formData, email: e.target.value })
+//                       }
+//                       placeholder="Enter return signal address..."
+//                     />
+//                     <KineticInput
+//                       label="Payload_Data (Message)"
+//                       id="message"
+//                       isTextArea
+//                       value={formData.message}
+//                       onChange={(e) =>
+//                         setFormData({ ...formData, message: e.target.value })
+//                       }
+//                       placeholder="Enter transmission contents..."
+//                     />
+
+//                     <button
+//                       type="submit"
+//                       disabled={
+//                         !formData.name || !formData.email || !formData.message
+//                       }
+//                       className="mt-auto w-full group relative overflow-hidden bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-on-primary-container)] border border-[var(--md-sys-color-outline-variant)] font-mono font-bold uppercase tracking-[0.3em] py-5 rounded-xl transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:hover:scale-100"
+//                     >
+//                       <span className="relative z-10 flex items-center justify-center gap-3">
+//                         Transmit_Payload{" "}
+//                         <Send className="w-4 h-4 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
+//                       </span>
+//                       <div className="absolute inset-0 bg-[var(--md-sys-color-primary)] opacity-0 group-hover:opacity-20 transition-opacity" />
+//                     </button>
+//                   </motion.form>
+//                 ) : (
+//                   <motion.div
+//                     key="terminal"
+//                     initial={{ opacity: 0 }}
+//                     animate={{ opacity: 1 }}
+//                     exit={{ opacity: 0 }}
+//                     className="absolute inset-0 bg-[#0a0a0a] p-8 font-mono text-[var(--md-sys-color-primary)] flex flex-col justify-center border border-[var(--md-sys-color-primary)]/30"
+//                   >
+//                     <div className="flex-1 flex flex-col gap-3 justify-center">
+//                       {log.map((line, i) => (
+//                         <motion.div
+//                           key={i}
+//                           initial={{ opacity: 0, x: -10 }}
+//                           animate={{ opacity: 1, x: 0 }}
+//                           className="text-xs sm:text-sm"
+//                         >
+//                           {line}
+//                         </motion.div>
+//                       ))}
+//                       {/* Note: If you don't have these imported from framer-motion/lucide, make sure CheckCircle and Activity are imported at the top! */}
+//                       {status === "TRANSMITTING" && (
+//                         <div className="w-6 h-6 animate-spin mt-4 border-2 border-[var(--md-sys-color-primary)] border-t-transparent rounded-full opacity-50" />
+//                       )}
+//                       {status === "DELIVERED" && (
+//                         <motion.div
+//                           initial={{ scale: 0 }}
+//                           animate={{ scale: 1 }}
+//                           className="mt-6 flex flex-col items-center text-center text-[var(--md-sys-color-primary)]"
+//                         >
+//                           {/* Placeholder for CheckCircle icon to avoid import errors if it wasn't there */}
+//                           <div className="w-16 h-16 mb-4 shadow-[0_0_20px_var(--md-sys-color-primary)] rounded-full flex items-center justify-center border-4 border-[var(--md-sys-color-primary)]">
+//                             <div className="w-6 h-10 border-r-4 border-b-4 border-[var(--md-sys-color-primary)] transform rotate-45 -mt-2"></div>
+//                           </div>
+//                           <span className="tracking-[0.4em] uppercase text-lg">
+//                             Signal Received
+//                           </span>
+//                         </motion.div>
+//                       )}
+//                     </div>
+//                   </motion.div>
+//                 )}
+//               </AnimatePresence>
+//             </div>
+//           </div>
+//         </FadeIn>
+
+//         <FadeIn className="lg:col-span-5 flex flex-col gap-4">
+//           <div className="bg-[var(--md-sys-color-surface-variant)] p-6 rounded-2xl border border-[var(--md-sys-color-outline-variant)] mb-2">
+//             <h3 className="font-mono text-xs uppercase tracking-widest text-[var(--md-sys-color-on-surface-variant)] mb-2">
+//               System Status
+//             </h3>
+//             <div className="flex items-center gap-3 text-sm font-bold text-[var(--md-sys-color-on-surface)]">
+//               <span className="relative flex h-3 w-3">
+//                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+//                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+//               </span>
+//               {contactData.status}
+//             </div>
+//           </div>
+
+//           {socialLinks.map((social, i) => {
+//             const SocialIcon = social.icon;
+//             return (
+//               <a
+//                 key={i}
+//                 href={social.url}
+//                 target="_blank"
+//                 rel="noreferrer"
+//                 className="relative p-6 rounded-2xl bg-[var(--md-sys-color-surface)] border border-[var(--md-sys-color-outline-variant)] hover:border-[var(--md-sys-color-primary)] transition-all duration-500 flex items-center gap-5 group overflow-hidden shadow-sm hover:shadow-xl"
+//               >
+//                 <div className="absolute inset-0 bg-gradient-to-r from-[var(--md-sys-color-primary)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -translate-x-full group-hover:translate-x-0" />
+//                 <div className="w-12 h-12 rounded-xl bg-[var(--md-sys-color-surface-variant)] flex items-center justify-center group-hover:bg-[var(--md-sys-color-primary)] transition-colors relative z-10">
+//                   <SocialIcon className="w-5 h-5 text-[var(--md-sys-color-on-surface)] group-hover:text-[var(--md-sys-color-on-primary)] transition-colors" />
+//                 </div>
+//                 <div className="flex-1 relative z-10 overflow-hidden">
+//                   <div className="font-mono text-xs uppercase tracking-widest text-[var(--md-sys-color-primary)] mb-1">
+//                     {social.name}
+//                   </div>
+//                   <div className="text-sm font-bold text-[var(--md-sys-color-on-surface)] truncate">
+//                     {social.desc}
+//                   </div>
+//                 </div>
+//                 <ArrowRight className="w-5 h-5 text-[var(--md-sys-color-outline-variant)] group-hover:text-[var(--md-sys-color-primary)] group-hover:translate-x-2 transition-all relative z-10" />
+//               </a>
+//             );
+//           })}
+//         </FadeIn>
+//       </div>
+//     </section>
+//   );
+// };
+// export default ContactSection;
+
+// import React, { useState } from "react";
+// import FadeIn from "./FadeIn";
+// import {
+//   Shield,
+//   Send,
+//   Mail,
+//   GitBranch,
+//   Users,
+//   ArrowRight,
+//   Phone,
+//   Activity,
+//   CheckCircle,
+// } from "lucide-react";
+// import { motion, AnimatePresence } from "framer-motion";
+
+// // --- STATIC FALLBACK DATA ---
+// // (Used for the social links on the right side)
+// const contactData = {
+//   status: "Accepting Direct Connections",
+//   email: "ansarimohammed122@gmail.com",
+//   phone: "+91 9326797184",
+//   github: "https://github.com", // Replace with your actual GitHub link later
+//   linkedin: "https://www.linkedin.com/in/mohammed-ansari-690524266",
+// };
+
+// const KineticInput = ({
+//   label,
+//   id,
+//   type = "text",
+//   value,
+//   onChange,
+//   isTextArea,
+//   placeholder,
+// }) => {
+//   const [focused, setFocused] = useState(false);
+
+//   return (
+//     <div className="relative mb-8 font-mono">
+//       <div className="flex justify-between items-end mb-2">
+//         <label
+//           className={`text-[10px] tracking-[0.2em] transition-colors duration-300 uppercase ${focused ? "text-[var(--md-sys-color-primary)]" : "text-[var(--md-sys-color-on-surface-variant)]"}`}
+//         >
+//           {label} {focused && <span className="animate-pulse">_</span>}
+//         </label>
+//         {focused && (
+//           <span className="text-[9px] text-[var(--md-sys-color-primary)] opacity-60 uppercase tracking-widest">
+//             [{value.length} / 256 BYTES]
+//           </span>
+//         )}
+//       </div>
+
+//       <div className="relative group">
+//         <div
+//           className={`absolute -top-1.5 -left-1.5 w-3 h-3 border-t-2 border-l-2 transition-all duration-300 ${focused ? "border-[var(--md-sys-color-primary)] scale-100 opacity-100" : "border-[var(--md-sys-color-outline-variant)] opacity-0 scale-150"}`}
+//         />
+//         <div
+//           className={`absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-2 border-r-2 transition-all duration-300 ${focused ? "border-[var(--md-sys-color-primary)] scale-100 opacity-100" : "border-[var(--md-sys-color-outline-variant)] opacity-0 scale-150"}`}
+//         />
+
+//         {isTextArea ? (
+//           <textarea
+//             id={id}
+//             value={value}
+//             onChange={onChange}
+//             onFocus={() => setFocused(true)}
+//             onBlur={() => setFocused(false)}
+//             className="w-full bg-[var(--md-sys-color-surface-variant)] border border-transparent text-[var(--md-sys-color-on-surface)] text-sm px-4 py-4 focus:outline-none transition-colors duration-300 placeholder-[var(--md-sys-color-on-surface-variant)] opacity-80"
+//             placeholder={placeholder}
+//             rows={4}
+//             spellCheck="false"
+//           />
+//         ) : (
+//           <input
+//             id={id}
+//             type={type}
+//             value={value}
+//             onChange={onChange}
+//             onFocus={() => setFocused(true)}
+//             onBlur={() => setFocused(false)}
+//             className="w-full bg-[var(--md-sys-color-surface-variant)] border border-transparent text-[var(--md-sys-color-on-surface)] text-sm px-4 py-3 focus:outline-none transition-colors duration-300 placeholder-[var(--md-sys-color-on-surface-variant)] opacity-80"
+//             placeholder={placeholder}
+//             spellCheck="false"
+//           />
+//         )}
+
+//         <div className="absolute bottom-0 left-0 h-[2px] bg-[var(--md-sys-color-outline-variant)] w-full overflow-hidden">
+//           <motion.div
+//             className="h-full bg-[var(--md-sys-color-primary)] shadow-[0_0_8px_var(--md-sys-color-primary)]"
+//             initial={{ width: 0 }}
+//             animate={{
+//               width: `${Math.min((value.length / (isTextArea ? 150 : 30)) * 100, 100)}%`,
+//             }}
+//             transition={{ ease: "easeOut", duration: 0.2 }}
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// const ContactSection = () => {
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     message: "",
+//   });
+//   const [status, setStatus] = useState("IDLE"); // IDLE, TRANSMITTING, DELIVERED
+//   const [log, setLog] = useState([]);
+
+//   const handleTransmit = async (e) => {
+//     e.preventDefault();
+//     if (!formData.name || !formData.email || !formData.message) return;
+
+//     setStatus("TRANSMITTING");
+//     setLog([
+//       "> INITIALIZING SECURE UPLINK...",
+//       "> CONNECTING TO DJANGO API...",
+//     ]);
+
+//     try {
+//       // --- REAL API CALL TO DJANGO ---
+//       const response = await fetch("http://localhost:8000/api/v1/contact/", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(formData),
+//       });
+
+//       if (!response.ok) {
+//         throw new Error("Network response was not ok");
+//       }
+
+//       // If Django accepts it, show success logs
+//       setLog((prev) => [
+//         ...prev,
+//         "> PAYLOAD SECURED.",
+//         "> UPLOADING TO SECURE SERVER...",
+//         "[||||||||||||||||||||] 100%",
+//       ]);
+
+//       setTimeout(() => {
+//         setStatus("DELIVERED");
+//         setLog((prev) => [
+//           ...prev,
+//           "> TRANSMISSION COMPLETE.",
+//           "> CONNECTION TERMINATED.",
+//         ]);
+
+//         setTimeout(() => {
+//           setStatus("IDLE");
+//           setLog([]);
+//           setFormData({ name: "", email: "", message: "" });
+//         }, 4000);
+//       }, 1500);
+//     } catch (error) {
+//       // If Django is offline or throws an error
+//       console.error("API Error:", error);
+//       setLog((prev) => [
+//         ...prev,
+//         "> CONNECTION FAILED.",
+//         "> ERROR 500: SERVER UNREACHABLE.",
+//       ]);
+
+//       setTimeout(() => {
+//         setStatus("IDLE");
+//         setLog([]);
+//       }, 3000);
+//     }
+//   };
+
+//   const socialLinks = [
+//     {
+//       name: "Global_Mail_Protocol",
+//       desc: contactData.email,
+//       icon: Mail,
+//       url: `mailto:${contactData.email}`,
+//     },
+//     {
+//       name: "Direct_Comms_Link",
+//       desc: contactData.phone,
+//       icon: Phone,
+//       url: `tel:${contactData.phone.replace(/\s/g, "")}`,
+//     },
+//     {
+//       name: "Source_Code_Vault",
+//       desc: "Access public repositories",
+//       icon: GitBranch,
+//       url: contactData.github,
+//     },
+//     {
+//       name: "Professional_Network",
+//       desc: "Establish business sync",
+//       icon: Users,
+//       url: contactData.linkedin,
+//     },
+//   ];
+
+//   return (
+//     <section id="contact" className="scroll-mt-28 sm:scroll-mt-24 pb-20">
+//       <FadeIn>
+//         <div className="flex items-center gap-3 mb-8">
+//           <Shield className="w-8 h-8 text-[var(--md-sys-color-primary)]" />
+//           <h2 className="text-3xl font-bold uppercase tracking-widest">
+//             Secure Uplink
+//           </h2>
+//         </div>
+//       </FadeIn>
+
+//       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+//         <FadeIn className="lg:col-span-7">
+//           <div className="bg-[var(--md-sys-color-surface)] border border-[var(--md-sys-color-outline-variant)] rounded-2xl overflow-hidden shadow-xl">
+//             <div className="h-12 bg-[var(--md-sys-color-surface-variant)] border-b border-[var(--md-sys-color-outline-variant)] flex items-center px-4 justify-between font-mono text-[10px] text-[var(--md-sys-color-on-surface-variant)] uppercase tracking-widest select-none">
+//               <div className="flex gap-2">
+//                 <span className="w-3 h-3 rounded-full bg-red-500/50"></span>
+//                 <span className="w-3 h-3 rounded-full bg-yellow-500/50"></span>
+//                 <span className="w-3 h-3 rounded-full bg-green-500/50"></span>
+//               </div>
+//               <span>Terminal_Port_001</span>
+//             </div>
+
+//             <div className="p-6 sm:p-10 relative min-h-[420px]">
+//               <AnimatePresence mode="wait">
+//                 {status === "IDLE" ? (
+//                   <motion.form
+//                     key="form"
+//                     initial={{ opacity: 0 }}
+//                     animate={{ opacity: 1 }}
+//                     exit={{ opacity: 0 }}
+//                     onSubmit={handleTransmit}
+//                     className="flex flex-col h-full"
+//                   >
+//                     <KineticInput
+//                       label="Target_ID (Name)"
+//                       id="name"
+//                       value={formData.name}
+//                       onChange={(e) =>
+//                         setFormData({ ...formData, name: e.target.value })
+//                       }
+//                       placeholder="Enter identification..."
+//                     />
+//                     <KineticInput
+//                       label="Return_Frequency (Email)"
+//                       id="email"
+//                       type="email"
+//                       value={formData.email}
+//                       onChange={(e) =>
+//                         setFormData({ ...formData, email: e.target.value })
+//                       }
+//                       placeholder="Enter return signal address..."
+//                     />
+//                     <KineticInput
+//                       label="Payload_Data (Message)"
+//                       id="message"
+//                       isTextArea
+//                       value={formData.message}
+//                       onChange={(e) =>
+//                         setFormData({ ...formData, message: e.target.value })
+//                       }
+//                       placeholder="Enter transmission contents..."
+//                     />
+
+//                     <button
+//                       type="submit"
+//                       disabled={
+//                         !formData.name || !formData.email || !formData.message
+//                       }
+//                       className="mt-auto w-full group relative overflow-hidden bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-on-primary-container)] border border-[var(--md-sys-color-outline-variant)] font-mono font-bold uppercase tracking-[0.3em] py-5 rounded-xl transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:hover:scale-100"
+//                     >
+//                       <span className="relative z-10 flex items-center justify-center gap-3">
+//                         Transmit_Payload{" "}
+//                         <Send className="w-4 h-4 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
+//                       </span>
+//                       <div className="absolute inset-0 bg-[var(--md-sys-color-primary)] opacity-0 group-hover:opacity-20 transition-opacity" />
+//                     </button>
+//                   </motion.form>
+//                 ) : (
+//                   <motion.div
+//                     key="terminal"
+//                     initial={{ opacity: 0 }}
+//                     animate={{ opacity: 1 }}
+//                     exit={{ opacity: 0 }}
+//                     className="absolute inset-0 bg-[#0a0a0a] p-8 font-mono text-[var(--md-sys-color-primary)] flex flex-col justify-center border border-[var(--md-sys-color-primary)]/30"
+//                   >
+//                     <div className="flex-1 flex flex-col gap-3 justify-center">
+//                       {log.map((line, i) => (
+//                         <motion.div
+//                           key={i}
+//                           initial={{ opacity: 0, x: -10 }}
+//                           animate={{ opacity: 1, x: 0 }}
+//                           className="text-xs sm:text-sm"
+//                         >
+//                           {line}
+//                         </motion.div>
+//                       ))}
+//                       {status === "TRANSMITTING" && (
+//                         <div className="w-6 h-6 animate-spin mt-4 border-2 border-[var(--md-sys-color-primary)] border-t-transparent rounded-full opacity-50" />
+//                       )}
+//                       {status === "DELIVERED" && (
+//                         <motion.div
+//                           initial={{ scale: 0 }}
+//                           animate={{ scale: 1 }}
+//                           className="mt-6 flex flex-col items-center text-center text-[var(--md-sys-color-primary)]"
+//                         >
+//                           <div className="w-16 h-16 mb-4 shadow-[0_0_20px_var(--md-sys-color-primary)] rounded-full flex items-center justify-center border-4 border-[var(--md-sys-color-primary)]">
+//                             <div className="w-6 h-10 border-r-4 border-b-4 border-[var(--md-sys-color-primary)] transform rotate-45 -mt-2"></div>
+//                           </div>
+//                           <span className="tracking-[0.4em] uppercase text-lg">
+//                             Signal Received
+//                           </span>
+//                         </motion.div>
+//                       )}
+//                     </div>
+//                   </motion.div>
+//                 )}
+//               </AnimatePresence>
+//             </div>
+//           </div>
+//         </FadeIn>
+
+//         <FadeIn className="lg:col-span-5 flex flex-col gap-4">
+//           <div className="bg-[var(--md-sys-color-surface-variant)] p-6 rounded-2xl border border-[var(--md-sys-color-outline-variant)] mb-2">
+//             <h3 className="font-mono text-xs uppercase tracking-widest text-[var(--md-sys-color-on-surface-variant)] mb-2">
+//               System Status
+//             </h3>
+//             <div className="flex items-center gap-3 text-sm font-bold text-[var(--md-sys-color-on-surface)]">
+//               <span className="relative flex h-3 w-3">
+//                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+//                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+//               </span>
+//               {contactData.status}
+//             </div>
+//           </div>
+
+//           {socialLinks.map((social, i) => {
+//             const SocialIcon = social.icon;
+//             return (
+//               <a
+//                 key={i}
+//                 href={social.url}
+//                 target="_blank"
+//                 rel="noreferrer"
+//                 className="relative p-6 rounded-2xl bg-[var(--md-sys-color-surface)] border border-[var(--md-sys-color-outline-variant)] hover:border-[var(--md-sys-color-primary)] transition-all duration-500 flex items-center gap-5 group overflow-hidden shadow-sm hover:shadow-xl"
+//               >
+//                 <div className="absolute inset-0 bg-gradient-to-r from-[var(--md-sys-color-primary)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -translate-x-full group-hover:translate-x-0" />
+//                 <div className="w-12 h-12 rounded-xl bg-[var(--md-sys-color-surface-variant)] flex items-center justify-center group-hover:bg-[var(--md-sys-color-primary)] transition-colors relative z-10">
+//                   <SocialIcon className="w-5 h-5 text-[var(--md-sys-color-on-surface)] group-hover:text-[var(--md-sys-color-on-primary)] transition-colors" />
+//                 </div>
+//                 <div className="flex-1 relative z-10 overflow-hidden">
+//                   <div className="font-mono text-xs uppercase tracking-widest text-[var(--md-sys-color-primary)] mb-1">
+//                     {social.name}
+//                   </div>
+//                   <div className="text-sm font-bold text-[var(--md-sys-color-on-surface)] truncate">
+//                     {social.desc}
+//                   </div>
+//                 </div>
+//                 <ArrowRight className="w-5 h-5 text-[var(--md-sys-color-outline-variant)] group-hover:text-[var(--md-sys-color-primary)] group-hover:translate-x-2 transition-all relative z-10" />
+//               </a>
+//             );
+//           })}
+//         </FadeIn>
+//       </div>
+//     </section>
+//   );
+// };
+// export default ContactSection;
+
 import React, { useState } from "react";
 import FadeIn from "./FadeIn";
 import {
@@ -326,16 +1042,17 @@ import {
   Phone,
   Activity,
   CheckCircle,
+  Lock,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { API_BASE_URL } from "../config";
 
-// --- BACKEND SCOPE PREPARATION ---
-// Later, replace this static object with state populated by your Django API
+// --- STATIC FALLBACK DATA ---
 const contactData = {
   status: "Accepting Direct Connections",
   email: "ansarimohammed122@gmail.com",
   phone: "+91 9326797184",
-  github: "https://github.com", // Replace with your actual GitHub link later
+  github: "https://github.com",
   linkedin: "https://www.linkedin.com/in/mohammed-ansari-690524266",
 };
 
@@ -351,15 +1068,15 @@ const KineticInput = ({
   const [focused, setFocused] = useState(false);
 
   return (
-    <div className="relative mb-8 font-mono">
+    <div className="relative mb-8 font-ide">
       <div className="flex justify-between items-end mb-2">
         <label
-          className={`text-[10px] tracking-[0.2em] transition-colors duration-300 uppercase ${focused ? "text-[var(--md-sys-color-primary)]" : "text-[var(--md-sys-color-on-surface-variant)]"}`}
+          className={`text-[11px] font-bold tracking-[0.2em] transition-colors duration-300 uppercase ${focused ? "text-[var(--md-sys-color-primary)]" : "text-[var(--md-sys-color-on-surface)]"}`}
         >
           {label} {focused && <span className="animate-pulse">_</span>}
         </label>
         {focused && (
-          <span className="text-[9px] text-[var(--md-sys-color-primary)] opacity-60 uppercase tracking-widest">
+          <span className="text-[10px] font-bold text-[var(--md-sys-color-primary)] uppercase tracking-widest">
             [{value.length} / 256 BYTES]
           </span>
         )}
@@ -380,7 +1097,7 @@ const KineticInput = ({
             onChange={onChange}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            className="w-full bg-[var(--md-sys-color-surface-variant)] border border-transparent text-[var(--md-sys-color-on-surface)] text-sm px-4 py-4 focus:outline-none transition-colors duration-300 placeholder-[var(--md-sys-color-on-surface-variant)] opacity-80"
+            className="w-full bg-[var(--md-sys-color-surface-variant)] border border-[var(--md-sys-color-outline-variant)] text-[var(--md-sys-color-on-surface)] text-sm sm:text-base px-4 py-4 focus:outline-none transition-all duration-300 placeholder-[var(--md-sys-color-on-surface-variant)] font-medium"
             placeholder={placeholder}
             rows={4}
             spellCheck="false"
@@ -393,7 +1110,7 @@ const KineticInput = ({
             onChange={onChange}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            className="w-full bg-[var(--md-sys-color-surface-variant)] border border-transparent text-[var(--md-sys-color-on-surface)] text-sm px-4 py-3 focus:outline-none transition-colors duration-300 placeholder-[var(--md-sys-color-on-surface-variant)] opacity-80"
+            className="w-full bg-[var(--md-sys-color-surface-variant)] border border-[var(--md-sys-color-outline-variant)] text-[var(--md-sys-color-on-surface)] text-sm sm:text-base px-4 py-3 focus:outline-none transition-all duration-300 placeholder-[var(--md-sys-color-on-surface-variant)] font-medium"
             placeholder={placeholder}
             spellCheck="false"
           />
@@ -420,49 +1137,60 @@ const ContactSection = () => {
     email: "",
     message: "",
   });
-  const [status, setStatus] = useState("IDLE"); // IDLE, TRANSMITTING, DELIVERED
+  const [status, setStatus] = useState("IDLE");
   const [log, setLog] = useState([]);
 
-  const handleTransmit = (e) => {
+  const handleTransmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setStatus("TRANSMITTING");
     setLog([
       "> INITIALIZING SECURE UPLINK...",
-      "> GENERATING 2048-BIT ENCRYPTION KEY...",
+      "> CONNECTING TO DJANGO API...",
     ]);
 
-    setTimeout(() => {
+    try {
+      const response = await fetch(`${API_BASE_URL}api/v1/contact/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error("Network Error");
+
       setLog((prev) => [
         ...prev,
-        "> KEY SECURED.",
-        "> PACKAGING DATA PAYLOAD...",
+        "> PAYLOAD SECURED.",
+        "> UPLOADING TO SECURE SERVER...",
+        "[||||||||||||||||||||] 100%",
       ]);
 
       setTimeout(() => {
+        setStatus("DELIVERED");
         setLog((prev) => [
           ...prev,
-          "> UPLOADING TO SECURE SERVER...",
-          "[||||||||||||||||||||] 100%",
+          "> TRANSMISSION COMPLETE.",
+          "> CONNECTION TERMINATED.",
         ]);
 
         setTimeout(() => {
-          setStatus("DELIVERED");
-          setLog((prev) => [
-            ...prev,
-            "> TRANSMISSION COMPLETE.",
-            "> CONNECTION TERMINATED.",
-          ]);
-
-          setTimeout(() => {
-            setStatus("IDLE");
-            setLog([]);
-            setFormData({ name: "", email: "", message: "" });
-          }, 4000);
-        }, 1500);
+          setStatus("IDLE");
+          setLog([]);
+          setFormData({ name: "", email: "", message: "" });
+        }, 4000);
       }, 1500);
-    }, 1500);
+    } catch (error) {
+      setLog((prev) => [
+        ...prev,
+        "> CONNECTION FAILED.",
+        "> ERROR 500: SERVER UNREACHABLE.",
+      ]);
+      setTimeout(() => {
+        setStatus("IDLE");
+        setLog([]);
+      }, 3000);
+    }
   };
 
   const socialLinks = [
@@ -494,28 +1222,36 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="scroll-mt-28 sm:scroll-mt-24 pb-20">
+      <style>
+        {`
+          @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+          .font-terminal { font-family: 'Share Tech Mono', monospace; }
+          .font-ide { font-family: 'Fira Code', monospace; }
+        `}
+      </style>
+
       <FadeIn>
-        <div className="flex items-center gap-3 mb-8">
-          <Shield className="w-8 h-8 text-[var(--md-sys-color-primary)]" />
-          <h2 className="text-3xl font-bold uppercase tracking-widest">
-            Secure Uplink
+        <div className="flex items-center gap-4 mb-8">
+          <Shield className="w-10 h-10 text-[var(--md-sys-color-primary)]" />
+          <h2 className="font-terminal text-3xl sm:text-5xl font-bold uppercase tracking-widest text-[var(--md-sys-color-on-surface)]">
+            Contact
           </h2>
         </div>
       </FadeIn>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
         <FadeIn className="lg:col-span-7">
-          <div className="bg-[var(--md-sys-color-surface)] border border-[var(--md-sys-color-outline-variant)] rounded-2xl overflow-hidden shadow-xl">
-            <div className="h-12 bg-[var(--md-sys-color-surface-variant)] border-b border-[var(--md-sys-color-outline-variant)] flex items-center px-4 justify-between font-mono text-[10px] text-[var(--md-sys-color-on-surface-variant)] uppercase tracking-widest select-none">
+          <div className="bg-[var(--md-sys-color-surface)] border-2 border-[var(--md-sys-color-outline-variant)] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="h-12 bg-[var(--md-sys-color-surface-variant)] border-b border-[var(--md-sys-color-outline-variant)] flex items-center px-4 justify-between font-terminal text-xs text-[var(--md-sys-color-on-surface)] uppercase tracking-widest select-none font-bold">
               <div className="flex gap-2">
-                <span className="w-3 h-3 rounded-full bg-red-500/50"></span>
-                <span className="w-3 h-3 rounded-full bg-yellow-500/50"></span>
-                <span className="w-3 h-3 rounded-full bg-green-500/50"></span>
+                <span className="w-3 h-3 rounded-full bg-red-500/80"></span>
+                <span className="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                <span className="w-3 h-3 rounded-full bg-green-500/80"></span>
               </div>
-              <span>Terminal_Port_001</span>
+              <span>Terminal_Session_001</span>
             </div>
 
-            <div className="p-6 sm:p-10 relative min-h-[420px]">
+            <div className="p-6 sm:p-10 relative min-h-[450px] flex flex-col">
               <AnimatePresence mode="wait">
                 {status === "IDLE" ? (
                   <motion.form
@@ -527,33 +1263,33 @@ const ContactSection = () => {
                     className="flex flex-col h-full"
                   >
                     <KineticInput
-                      label="Target_ID (Name)"
+                      label="Origin_Identifier"
                       id="name"
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
-                      placeholder="Enter identification..."
+                      placeholder="Identify yourself..."
                     />
                     <KineticInput
-                      label="Return_Frequency (Email)"
+                      label="Return_Frequency"
                       id="email"
                       type="email"
                       value={formData.email}
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      placeholder="Enter return signal address..."
+                      placeholder="signal@destination.com"
                     />
                     <KineticInput
-                      label="Payload_Data (Message)"
+                      label="Payload_Content"
                       id="message"
                       isTextArea
                       value={formData.message}
                       onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
                       }
-                      placeholder="Enter transmission contents..."
+                      placeholder="Enter encrypted message packet..."
                     />
 
                     <button
@@ -561,13 +1297,12 @@ const ContactSection = () => {
                       disabled={
                         !formData.name || !formData.email || !formData.message
                       }
-                      className="mt-auto w-full group relative overflow-hidden bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-on-primary-container)] border border-[var(--md-sys-color-outline-variant)] font-mono font-bold uppercase tracking-[0.3em] py-5 rounded-xl transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:hover:scale-100"
+                      className="mt-auto w-full group relative overflow-hidden bg-[var(--md-sys-color-primary)] text-[var(--md-sys-color-on-primary)] font-terminal font-bold uppercase tracking-[0.4em] py-5 rounded-xl transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-30 disabled:hover:scale-100 shadow-lg"
                     >
-                      <span className="relative z-10 flex items-center justify-center gap-3">
-                        Transmit_Payload{" "}
+                      <span className="relative z-10 flex items-center justify-center gap-3 text-sm">
+                        TRANSMIT_SIGNAL{" "}
                         <Send className="w-4 h-4 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
                       </span>
-                      <div className="absolute inset-0 bg-[var(--md-sys-color-primary)] opacity-0 group-hover:opacity-20 transition-opacity" />
                     </button>
                   </motion.form>
                 ) : (
@@ -576,35 +1311,31 @@ const ContactSection = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-[#0a0a0a] p-8 font-mono text-[var(--md-sys-color-primary)] flex flex-col justify-center border border-[var(--md-sys-color-primary)]/30"
+                    className="absolute inset-0 bg-[#050805] p-8 font-ide text-[var(--md-sys-color-primary)] flex flex-col justify-center border border-[var(--md-sys-color-primary)]/30"
                   >
-                    <div className="flex-1 flex flex-col gap-3 justify-center">
+                    <div className="flex-1 flex flex-col gap-4 justify-center">
                       {log.map((line, i) => (
                         <motion.div
                           key={i}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
-                          className="text-xs sm:text-sm"
+                          className="text-xs sm:text-sm font-bold tracking-wider"
                         >
                           {line}
                         </motion.div>
                       ))}
-                      {/* Note: If you don't have these imported from framer-motion/lucide, make sure CheckCircle and Activity are imported at the top! */}
                       {status === "TRANSMITTING" && (
-                        <div className="w-6 h-6 animate-spin mt-4 border-2 border-[var(--md-sys-color-primary)] border-t-transparent rounded-full opacity-50" />
+                        <Activity className="w-8 h-8 animate-spin mt-4 opacity-70" />
                       )}
                       {status === "DELIVERED" && (
                         <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          className="mt-6 flex flex-col items-center text-center text-[var(--md-sys-color-primary)]"
+                          initial={{ scale: 0, filter: "blur(10px)" }}
+                          animate={{ scale: 1, filter: "blur(0px)" }}
+                          className="mt-8 flex flex-col items-center text-center"
                         >
-                          {/* Placeholder for CheckCircle icon to avoid import errors if it wasn't there */}
-                          <div className="w-16 h-16 mb-4 shadow-[0_0_20px_var(--md-sys-color-primary)] rounded-full flex items-center justify-center border-4 border-[var(--md-sys-color-primary)]">
-                            <div className="w-6 h-10 border-r-4 border-b-4 border-[var(--md-sys-color-primary)] transform rotate-45 -mt-2"></div>
-                          </div>
-                          <span className="tracking-[0.4em] uppercase text-lg">
-                            Signal Received
+                          <CheckCircle className="w-20 h-20 mb-4 text-[var(--md-sys-color-primary)] shadow-[0_0_30px_rgba(var(--md-sys-color-primary-rgb),0.4)] rounded-full" />
+                          <span className="font-terminal tracking-[0.5em] uppercase text-xl font-bold">
+                            Signal_Received
                           </span>
                         </motion.div>
                       )}
@@ -617,16 +1348,16 @@ const ContactSection = () => {
         </FadeIn>
 
         <FadeIn className="lg:col-span-5 flex flex-col gap-4">
-          <div className="bg-[var(--md-sys-color-surface-variant)] p-6 rounded-2xl border border-[var(--md-sys-color-outline-variant)] mb-2">
-            <h3 className="font-mono text-xs uppercase tracking-widest text-[var(--md-sys-color-on-surface-variant)] mb-2">
-              System Status
+          <div className="bg-[var(--md-sys-color-surface-variant)] p-6 rounded-2xl border-2 border-[var(--md-sys-color-outline-variant)] mb-2">
+            <h3 className="font-terminal text-xs uppercase tracking-[0.3em] text-[var(--md-sys-color-primary)] mb-3 font-bold">
+              System_Status
             </h3>
-            <div className="flex items-center gap-3 text-sm font-bold text-[var(--md-sys-color-on-surface)]">
+            <div className="flex items-center gap-4 text-base font-ide font-bold text-[var(--md-sys-color-on-surface)]">
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
               </span>
-              {contactData.status}
+              {contactData.status.toUpperCase()}
             </div>
           </div>
 
@@ -638,21 +1369,21 @@ const ContactSection = () => {
                 href={social.url}
                 target="_blank"
                 rel="noreferrer"
-                className="relative p-6 rounded-2xl bg-[var(--md-sys-color-surface)] border border-[var(--md-sys-color-outline-variant)] hover:border-[var(--md-sys-color-primary)] transition-all duration-500 flex items-center gap-5 group overflow-hidden shadow-sm hover:shadow-xl"
+                className="relative p-6 rounded-2xl bg-[var(--md-sys-color-surface)] border-2 border-[var(--md-sys-color-outline-variant)] hover:border-[var(--md-sys-color-primary)] transition-all duration-500 flex items-center gap-6 group overflow-hidden shadow-md hover:shadow-2xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-[var(--md-sys-color-primary)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -translate-x-full group-hover:translate-x-0" />
-                <div className="w-12 h-12 rounded-xl bg-[var(--md-sys-color-surface-variant)] flex items-center justify-center group-hover:bg-[var(--md-sys-color-primary)] transition-colors relative z-10">
-                  <SocialIcon className="w-5 h-5 text-[var(--md-sys-color-on-surface)] group-hover:text-[var(--md-sys-color-on-primary)] transition-colors" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[var(--md-sys-color-primary)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-full group-hover:translate-x-0" />
+                <div className="w-14 h-14 rounded-xl bg-[var(--md-sys-color-surface-variant)] flex items-center justify-center group-hover:bg-[var(--md-sys-color-primary)] transition-all duration-500 relative z-10 border border-transparent group-hover:border-white/20">
+                  <SocialIcon className="w-6 h-6 text-[var(--md-sys-color-on-surface)] group-hover:text-[var(--md-sys-color-on-primary)] transition-colors" />
                 </div>
                 <div className="flex-1 relative z-10 overflow-hidden">
-                  <div className="font-mono text-xs uppercase tracking-widest text-[var(--md-sys-color-primary)] mb-1">
+                  <div className="font-terminal text-xs uppercase tracking-widest text-[var(--md-sys-color-primary)] mb-1 font-bold">
                     {social.name}
                   </div>
-                  <div className="text-sm font-bold text-[var(--md-sys-color-on-surface)] truncate">
+                  <div className="font-ide text-sm sm:text-base font-bold text-[var(--md-sys-color-on-surface)] truncate tracking-tight">
                     {social.desc}
                   </div>
                 </div>
-                <ArrowRight className="w-5 h-5 text-[var(--md-sys-color-outline-variant)] group-hover:text-[var(--md-sys-color-primary)] group-hover:translate-x-2 transition-all relative z-10" />
+                <ArrowRight className="w-5 h-5 text-[var(--md-sys-color-primary)] opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all relative z-10" />
               </a>
             );
           })}
@@ -661,4 +1392,5 @@ const ContactSection = () => {
     </section>
   );
 };
+
 export default ContactSection;

@@ -12,6 +12,24 @@
 //   BookText,
 // } from "lucide-react";
 
+// // --- BACKEND SCOPE PREPARATION ---
+// // Later, replace this static object with state populated by your Django API
+// const profileData = {
+//   name: "Mohammed Ansari",
+//   role: "Software Developer",
+//   subRole: "Full-Stack Programmer.",
+//   status: "Fresher. Ready to contribute.",
+//   bio: "Aspiring Software Developer with a solid foundation in full-stack web technologies (React, Django), multiple programming languages, and Linux environments.",
+//   email: "ansarimohammed122@gmail.com",
+//   phone: "+91 9326797184",
+//   linkedin: "https://www.linkedin.com/in/mohammed-ansari-690524266",
+//   github: "https://github.com", // Add your specific link here
+//   location: "Mumbai, Maharashtra",
+//   education: "B.Sc in Information Technology",
+//   skillsList:
+//     "> Frontend: React, Tailwind CSS, HTML, CSS\n> Backend: Django, REST APIs, PHP\n> Languages: Python, JavaScript, Java, C++, C\n> Tools & DB: Linux CLI, Git, MySQL",
+// };
+
 // const HeroSection = ({ scrollTo, isDarkMode }) => {
 //   const [history, setHistory] = useState([
 //     {
@@ -25,30 +43,31 @@
 //   const terminalRef = useRef(null);
 
 //   // Inverse M3E Theme Mapping for Terminal (Opposite of Site)
+//   // Highly optimized for WCAG contrast readability
 //   const termColors = isDarkMode
 //     ? {
 //         surface: "bg-[#F4F6E9]",
 //         surfaceVariant: "bg-[#E2E6D5]",
 //         border: "border-[#C6CAB9]",
-//         text: "text-[#1B1C16]",
-//         textMuted: "text-[#44493C]",
+//         text: "text-[#131410]", // Darkened for pure contrast
+//         textMuted: "text-[#2E3128]", // Darkened to improve readability
 //         primary: "text-[#435033]",
 //         secondary: "text-[#161F0A]",
-//         placeholder: "placeholder:text-[#757A6B]",
+//         placeholder: "placeholder:text-[#5E6355]", // Darkened placeholder
 //         scrollThumb: "scrollbar-thumb-[#C6CAB9]",
 //         btnHover: "hover:bg-[#C6CAB9]",
 //       }
 //     : {
-//         surface: "bg-[#161D10]",
-//         surfaceVariant: "bg-[#3A4A2B]",
+//         surface: "bg-[#0E120A]", // Darkened for better background contrast
+//         surfaceVariant: "bg-[#25301B]",
 //         border: "border-[#3A4A2B]",
-//         text: "text-[#E3EAD8]",
-//         textMuted: "text-[#C3CCB6]",
+//         text: "text-[#F4F6E9]", // Brightened off-white
+//         textMuted: "text-[#D3DAC6]", // Brightened muted text
 //         primary: "text-[#A5D27E]",
 //         secondary: "text-[#C2F098]",
-//         placeholder: "placeholder:text-[#8B997A]",
+//         placeholder: "placeholder:text-[#A1AD8E]", // Brightened placeholder
 //         scrollThumb: "scrollbar-thumb-[#3A4A2B]",
-//         btnHover: "hover:bg-[#424242]",
+//         btnHover: "hover:bg-[#2A361F]",
 //       };
 
 //   // Documentation Theme Mapping (Matches Native Site Theme)
@@ -59,7 +78,7 @@
 //     text: "text-[var(--md-sys-color-on-surface)]",
 //     textMuted: "text-[var(--md-sys-color-on-surface-variant)]",
 //     primary: "text-[var(--md-sys-color-primary)]",
-//     bgHover: "hover:bg-[var(--md-sys-color-outline-variant)]",
+//     bgHover: "hover:bg-[var(--md-sys-color-surface-variant-hover)]",
 //     scrollThumb: "scrollbar-thumb-[var(--md-sys-color-outline-variant)]",
 //   };
 
@@ -102,50 +121,42 @@
 //               "Available commands:\n  whoami     - Print user information\n  skills     - List technical proficiencies\n  details    - View personal data\n  [section]  - Type any section (e.g., education, projects) to navigate\n  email      - Output contact email\n  github     - Display GitHub profile link\n  linkedin   - Display LinkedIn profile link\n  twitter    - Display Twitter profile link\n  neofetch   - Display system information\n  date       - Print current date and time\n  reboot     - Restart the kinetic environment\n  clear      - Clear terminal output";
 //             break;
 //           case "whoami":
-//             output = "Mohammed Ansari\nSoftware Engineer & Interface Designer";
+//             output = `${profileData.name}\n${profileData.role} | ${profileData.subRole}`;
 //             break;
 //           case "details":
 //           case "info":
-//             output =
-//               "NAME: Mohammed Ansari\nROLE: Senior Frontend Engineer\nLOCATION: Remote / Worldwide\nFOCUS: React, GNOME HIG, Framer Motion, Kinetic UIs";
+//             output = `NAME: ${profileData.name}\nROLE: ${profileData.role}\nLOCATION: ${profileData.location}\nEDUCATION: ${profileData.education}\nFOCUS: React, Django, Full-Stack Web Development`;
 //             break;
 //           case "skills":
-//             output =
-//               "> Frontend: React, Next.js, Framer Motion\n> Languages: TypeScript, JavaScript, CSS/Sass\n> Environment: Linux, Git, Node.js\n> Design: GNOME HIG, Material 3, Figma";
+//             output = profileData.skillsList;
 //             break;
 //           case "email":
-//             output = "Contact Email: hello@example.com";
+//             output = `Contact Email: ${profileData.email}\nPhone: ${profileData.phone}`;
 //             break;
 //           case "github":
-//             output =
-//               "GitHub Repository: https://github.com\n(Command+Click or Ctrl+Click to open)";
+//             output = `GitHub Repository: ${profileData.github}\n(Command+Click or Ctrl+Click to open)`;
 //             break;
 //           case "linkedin":
-//             output = "LinkedIn Network: https://linkedin.com";
+//             output = `LinkedIn Network: ${profileData.linkedin}`;
 //             break;
 //           case "twitter":
 //           case "x":
-//             output = "Twitter/X Broadcast: https://twitter.com";
+//             output = "Twitter/X: Not currently active on this frequency.";
 //             break;
 //           case "neofetch":
 //             output = `
-//        .MMM..:MMMMMMM            mohammed@kinetic-env
-//       MMMMMMMMMMMMMMMMMM         --------------------
-//       MMMMMMMMMMMMMMMMMMMM       OS: GNOME Web Env v1.0
-//      MMMMMMMMMMMMMMMMMMMMMM      Host: React DOM
-//     MMMMMMMMMMMMMMMMMMMMMMMM     Kernel: JavaScript (V8)
-//    MMMMMMMMMMMMMMMMMMMMMMMMMM    Uptime: ${Math.floor(performance.now() / 1000)}s
-//    MMMMMMMMMMMMMMMMMMMMMMMMMM    Packages: npm (lots)
-//   MMMMMMMMMM        MMMMMMMMMM   Shell: zsh 5.8
-//   MMMMMMMM          MMMMMMMMMM   Theme: Adwaita/Material 3 Inverse
-//   MMMMMMMMMMMMMMMMMMMMMMMMMMMM   CPU: Brain (1 core, highly caffeinated)
-//   MMMMMMMMMMMMMMMMMMMMMMMMMMMM   Memory: 16GB / 32GB
-//    MMMMMMMMMMMMMMMMMMMMMMMMMM
-//    MMMMMMMMMMMMMMMMMMMMMMMMMM
-//     MMMMMMMMMMMMMMMMMMMMMMMM
-//      MMMMMMMMMMMMMMMMMMMMMM
-//       MMMMMMMMMMMMMMMMMMMM
-//        MMMMMMMMMMMMMMMMMM
+//        .--------------.     mohammed@kinetic-env
+//        |    < / >     |     --------------------
+//        |   React.js   |     OS: Web Env v1.0
+//        |   Django     |     Host: React DOM
+//        '--------------'     Kernel: JavaScript (V8)
+//         /============\\       Uptime: ${Math.floor(performance.now() / 1000)}s
+//       /==============\\       Role: ${profileData.role}
+//                              Stack: React, Django, Tailwind
+//                              Location: ${profileData.location}
+//                              Education: ${profileData.education}
+//                              CPU: Brain (1 core, continuous learning)
+//                              Memory: High capacity for new tech
 //             `;
 //             break;
 //           case "date":
@@ -190,24 +201,39 @@
 
 //   return (
 //     <section className="min-h-[75vh] flex flex-col justify-center pt-8 sm:pt-16 relative">
+//       <style>
+//         {`
+//           @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+
+//           .font-terminal {
+//             font-family: 'Share Tech Mono', monospace;
+//           }
+//           .font-ide {
+//             font-family: 'Fira Code', monospace;
+//           }
+//         `}
+//       </style>
+
 //       {/* Background Ambient Glow */}
 //       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[300px] h-[300px] bg-[var(--md-sys-color-primary)]/10 blur-[100px] rounded-full mix-blend-multiply dark:mix-blend-screen pointer-events-none" />
 
-//       {/* Top Row: Text & Terminal - Added organic flex-shrinking capabilities */}
+//       {/* Top Row: Text & Terminal */}
 //       <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-12 items-start justify-between z-10 mb-12">
-//         {/* Left Column: Cinematic Typography & Actions - Reduced flex weight to give terminal more room */}
+//         {/* Left Column: Cinematic Typography & Actions */}
 //         <div className="flex-1 w-full relative z-10 flex flex-col items-start text-left min-w-[280px] sm:min-w-[320px]">
 //           <FadeIn delay={100}>
+//             {/* Added font-ide for the technical status badge */}
 //             <div className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--md-sys-color-surface-variant)] text-[var(--md-sys-color-on-surface)] font-bold text-xs sm:text-sm mb-8 border border-[var(--md-sys-color-outline-variant)] hover:border-[var(--md-sys-color-primary)] hover:bg-[var(--md-sys-color-primary-container)] transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:shadow-md cursor-default">
 //               <span className="relative flex h-2.5 w-2.5">
 //                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--md-sys-color-primary)] opacity-75"></span>
 //                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--md-sys-color-primary)]"></span>
 //               </span>
-//               <span>System Ready. Available for hire.</span>
+//               <span className="font-ide">{profileData.status}</span>
 //             </div>
 //           </FadeIn>
 
-//           <h1 className="text-[3rem] sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem] font-extrabold tracking-tight leading-[1] text-[var(--md-sys-color-on-surface)] mb-6 font-mono transition-colors duration-700">
+//           {/* Changed font-mono to font-terminal for maximum hacking impact */}
+//           <h1 className="text-[3rem] sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem] font-extrabold tracking-tight leading-[1] text-[var(--md-sys-color-on-surface)] mb-6 font-terminal transition-colors duration-700">
 //             <span className="block overflow-hidden pb-1">
 //               <motion.span
 //                 initial={{ y: "100%" }}
@@ -233,7 +259,7 @@
 //                 }}
 //                 className="inline-block"
 //               >
-//                 Engineer.
+//                 Developer.
 //               </motion.span>
 //             </span>
 //             <span className="block overflow-hidden mt-3 sm:mt-4">
@@ -245,23 +271,21 @@
 //                   ease: [0.25, 1, 0.5, 1],
 //                   delay: 0.6,
 //                 }}
-//                 className="inline-block text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[var(--md-sys-color-on-surface-variant)] opacity-80 font-semibold tracking-normal font-sans"
+//                 className="inline-block text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[var(--md-sys-color-on-surface-variant)] font-semibold tracking-wide font-sans"
 //               >
-//                 Interface Designer.
+//                 {profileData.subRole}
 //               </motion.span>
 //             </span>
 //           </h1>
 
 //           <FadeIn delay={400}>
-//             <p className="text-base sm:text-lg md:text-xl text-[var(--md-sys-color-on-surface-variant)] max-w-[440px] leading-relaxed mb-6 font-medium">
-//               I specialize in building robust digital experiences, combining the
-//               strict information hierarchy of Linux desktop environments with
-//               deeply engaging, fluid cinematic motion.
+//             <p className="text-base sm:text-lg md:text-xl text-[var(--md-sys-color-on-surface)] max-w-[480px] leading-relaxed mb-6 font-medium">
+//               {profileData.bio}
 //             </p>
 //           </FadeIn>
 //         </div>
 
-//         {/* Right Column: Interactive GNOME Console */}
+//         {/* Right Column: Interactive Console */}
 //         <FadeIn
 //           delay={700}
 //           className="block flex-[1.4] w-full max-w-[600px] xl:max-w-[640px] min-w-[280px] lg:ml-auto shrink transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
@@ -291,8 +315,9 @@
 //                 </div>
 //               </div>
 
+//               {/* Added font-ide for the top bar title */}
 //               <div
-//                 className={`text-[13px] font-semibold ${showDocs ? docColors.text : termColors.text} tracking-wide flex items-center gap-2 transition-colors duration-700`}
+//                 className={`font-ide text-[12px] font-semibold ${showDocs ? docColors.text : termColors.text} tracking-wider flex items-center gap-2 transition-colors duration-700`}
 //               >
 //                 {showDocs ? (
 //                   <>
@@ -320,7 +345,7 @@
 //               >
 //                 <div>
 //                   <h3
-//                     className={`text-lg sm:text-xl font-bold ${docColors.text} mb-2`}
+//                     className={`text-lg sm:text-xl font-bold ${docColors.text} mb-2 tracking-wide font-terminal uppercase`}
 //                   >
 //                     Terminal Commands
 //                   </h3>
@@ -350,11 +375,11 @@
 //                     ].map((item) => (
 //                       <div key={item.cmd} className="flex flex-col gap-1.5">
 //                         <code
-//                           className={`font-mono font-bold px-2.5 py-1 rounded-md w-fit bg-[var(--md-sys-color-surface-variant)] ${docColors.primary} border border-[var(--md-sys-color-outline-variant)]`}
+//                           className={`font-ide font-bold px-2.5 py-1.5 rounded-md w-fit bg-[var(--md-sys-color-surface-variant)] ${docColors.primary} border border-[var(--md-sys-color-outline-variant)]`}
 //                         >
 //                           {item.cmd}
 //                         </code>
-//                         <span className="text-xs">{item.desc}</span>
+//                         <span className="text-xs font-medium">{item.desc}</span>
 //                       </div>
 //                     ))}
 //                   </div>
@@ -399,11 +424,11 @@
 //                     ].map((item) => (
 //                       <div key={item.cmd} className="flex flex-col gap-1.5">
 //                         <code
-//                           className={`font-mono font-bold px-2.5 py-1 rounded-md w-fit bg-[var(--md-sys-color-surface-variant)] ${docColors.primary} border border-[var(--md-sys-color-outline-variant)]`}
+//                           className={`font-ide font-bold px-2.5 py-1.5 rounded-md w-fit bg-[var(--md-sys-color-surface-variant)] ${docColors.primary} border border-[var(--md-sys-color-outline-variant)]`}
 //                         >
 //                           {item.cmd}
 //                         </code>
-//                         <span className="text-xs">{item.desc}</span>
+//                         <span className="text-xs font-medium">{item.desc}</span>
 //                       </div>
 //                     ))}
 //                   </div>
@@ -413,7 +438,8 @@
 //               /* Terminal View */
 //               <div
 //                 ref={terminalRef}
-//                 className={`flex-1 p-5 overflow-y-auto font-mono text-[13px] sm:text-sm ${termColors.textMuted} flex flex-col gap-3 cursor-text scrollbar-thin ${termColors.scrollThumb} scrollbar-track-transparent transition-colors duration-700`}
+//                 // Replaced font-mono with font-ide for the entire terminal body
+//                 className={`flex-1 p-5 overflow-y-auto font-ide text-[12px] sm:text-[13px] ${termColors.textMuted} flex flex-col gap-3 cursor-text scrollbar-thin ${termColors.scrollThumb} scrollbar-track-transparent transition-colors duration-700`}
 //                 onClick={() =>
 //                   document.getElementById("terminal-input")?.focus()
 //                 }
@@ -436,7 +462,7 @@
 //                           ~
 //                         </span>
 //                         <span
-//                           className={`${termColors.text} transition-colors duration-700`}
+//                           className={`${termColors.text} font-medium transition-colors duration-700`}
 //                         >
 //                           {entry.cmd}
 //                         </span>
@@ -444,7 +470,7 @@
 //                     )}
 //                     {entry.output && (
 //                       <div
-//                         className={`${termColors.textMuted} leading-relaxed transition-colors duration-700`}
+//                         className={`${termColors.textMuted} font-medium leading-relaxed tracking-wide transition-colors duration-700`}
 //                       >
 //                         {entry.output}
 //                       </div>
@@ -470,7 +496,8 @@
 //                     value={input}
 //                     onChange={(e) => setInput(e.target.value)}
 //                     onKeyDown={handleCommand}
-//                     className={`flex-1 bg-transparent outline-none ${termColors.text} font-mono ${termColors.placeholder} transition-colors duration-700 w-full`}
+//                     // Applied font-ide here to ensure input matches the history logs
+//                     className={`flex-1 bg-transparent outline-none ${termColors.text} font-ide font-medium ${termColors.placeholder} tracking-wide transition-colors duration-700 w-full`}
 //                     autoComplete="off"
 //                     spellCheck="false"
 //                     autoFocus
@@ -488,26 +515,31 @@
 //         className="w-full flex flex-col sm:flex-row gap-4 z-10"
 //       >
 //         <a
-//           href="#blog"
-//           onClick={handleBlogDemo}
-//           className="adw-btn adw-btn-primary w-full sm:w-1/2 group flex items-center justify-center gap-3 px-4 py-4 text-sm sm:text-base whitespace-nowrap cursor-pointer"
+//           href="#projects"
+//           onClick={() => scrollTo("#projects")}
+//           className="adw-btn adw-btn-primary w-full sm:w-1/2 group flex items-center justify-center gap-3 px-4 py-4 text-sm sm:text-base font-bold whitespace-nowrap cursor-pointer tracking-wide"
 //         >
 //           <BookOpen className="w-5 h-5 shrink-0 group-hover:-translate-y-1 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" />
-//           <span>Read My Blog</span>
+//           <span className="font-ide uppercase tracking-wider">
+//             View My Projects
+//           </span>
 //         </a>
 //         <a
-//           href="https://github.com"
+//           href={profileData.github}
 //           target="_blank"
 //           rel="noreferrer"
-//           className="adw-btn adw-btn-secondary bg-transparent border-2 w-full sm:w-1/2 flex items-center justify-center gap-3 px-4 py-4 text-sm sm:text-base hover:bg-[var(--md-sys-color-surface-variant)] whitespace-nowrap cursor-pointer"
+//           className="adw-btn adw-btn-secondary bg-transparent border-2 w-full sm:w-1/2 flex items-center justify-center gap-3 px-4 py-4 text-sm sm:text-base font-bold hover:bg-[var(--md-sys-color-surface-variant)] whitespace-nowrap cursor-pointer tracking-wide"
 //         >
 //           <GitBranch className="w-5 h-5 shrink-0 group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" />
-//           <span>GitHub Profile</span>
+//           <span className="font-ide uppercase tracking-wider">
+//             GitHub Profile
+//           </span>
 //         </a>
 //       </FadeIn>
 //     </section>
 //   );
 // };
+
 // export default HeroSection;
 
 import React, { useState, useEffect, useRef } from "react";
@@ -523,9 +555,9 @@ import {
   ArrowLeft,
   BookText,
 } from "lucide-react";
+import { API_BASE_URL } from "../config"; // Ensure this path matches where you created config.js
 
 // --- BACKEND SCOPE PREPARATION ---
-// Later, replace this static object with state populated by your Django API
 const profileData = {
   name: "Mohammed Ansari",
   role: "Software Developer",
@@ -535,9 +567,10 @@ const profileData = {
   email: "ansarimohammed122@gmail.com",
   phone: "+91 9326797184",
   linkedin: "https://www.linkedin.com/in/mohammed-ansari-690524266",
-  github: "https://github.com", // Add your specific link here
+  github: "https://github.com",
   location: "Mumbai, Maharashtra",
   education: "B.Sc in Information Technology",
+  // Fallback skills if the API is offline
   skillsList:
     "> Frontend: React, Tailwind CSS, HTML, CSS\n> Backend: Django, REST APIs, PHP\n> Languages: Python, JavaScript, Java, C++, C\n> Tools & DB: Linux CLI, Git, MySQL",
 };
@@ -552,36 +585,55 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
   ]);
   const [input, setInput] = useState("");
   const [showDocs, setShowDocs] = useState(false);
+  const [dynamicSkills, setDynamicSkills] = useState(null);
   const terminalRef = useRef(null);
 
-  // Inverse M3E Theme Mapping for Terminal (Opposite of Site)
+  // --- FETCH SKILLS FOR TERMINAL ---
+  useEffect(() => {
+    console.log("CURRENT API TARGET:", API_BASE_URL);
+    fetch(`${API_BASE_URL}api/v1/skills/`)
+      .then((res) => {
+        if (!res.ok) throw new Error("API Offline");
+        return res.json();
+      })
+      .then((data) => {
+        // Map the array of objects into a clean terminal string
+        const formattedSkills =
+          "SYSTEM DEPENDENCIES:\n> " + data.map((s) => s.name).join("\n> ");
+        setDynamicSkills(formattedSkills);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch skills for terminal:", error);
+      });
+  }, []);
+
+  // Inverse M3E Theme Mapping for Terminal
   const termColors = isDarkMode
     ? {
         surface: "bg-[#F4F6E9]",
         surfaceVariant: "bg-[#E2E6D5]",
         border: "border-[#C6CAB9]",
-        text: "text-[#1B1C16]",
-        textMuted: "text-[#44493C]",
+        text: "text-[#131410]",
+        textMuted: "text-[#2E3128]",
         primary: "text-[#435033]",
         secondary: "text-[#161F0A]",
-        placeholder: "placeholder:text-[#757A6B]",
+        placeholder: "placeholder:text-[#5E6355]",
         scrollThumb: "scrollbar-thumb-[#C6CAB9]",
         btnHover: "hover:bg-[#C6CAB9]",
       }
     : {
-        surface: "bg-[#161D10]",
-        surfaceVariant: "bg-[#3A4A2B]",
+        surface: "bg-[#0E120A]",
+        surfaceVariant: "bg-[#25301B]",
         border: "border-[#3A4A2B]",
-        text: "text-[#E3EAD8]",
-        textMuted: "text-[#C3CCB6]",
+        text: "text-[#F4F6E9]",
+        textMuted: "text-[#D3DAC6]",
         primary: "text-[#A5D27E]",
         secondary: "text-[#C2F098]",
-        placeholder: "placeholder:text-[#8B997A]",
+        placeholder: "placeholder:text-[#A1AD8E]",
         scrollThumb: "scrollbar-thumb-[#3A4A2B]",
-        btnHover: "hover:bg-[#424242]",
+        btnHover: "hover:bg-[#2A361F]",
       };
 
-  // Documentation Theme Mapping (Matches Native Site Theme)
   const docColors = {
     surface: "bg-[var(--md-sys-color-surface)]",
     surfaceVariant: "bg-[var(--md-sys-color-surface-variant)]",
@@ -589,7 +641,7 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
     text: "text-[var(--md-sys-color-on-surface)]",
     textMuted: "text-[var(--md-sys-color-on-surface-variant)]",
     primary: "text-[var(--md-sys-color-primary)]",
-    bgHover: "hover:bg-[var(--md-sys-color-outline-variant)]",
+    bgHover: "hover:bg-[var(--md-sys-color-surface-variant-hover)]",
     scrollThumb: "scrollbar-thumb-[var(--md-sys-color-outline-variant)]",
   };
 
@@ -611,7 +663,6 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
         return;
       }
 
-      // 1. Dynamic Section Routing
       const validSections = [
         "about",
         "services",
@@ -620,12 +671,11 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
         "projects",
         "contact",
       ];
+
       if (validSections.includes(cmd)) {
         output = `Executing scroll sequence to module: [${cmd.toUpperCase()}]...`;
         setTimeout(() => scrollTo(`#${cmd}`), 600);
-      }
-      // 2. Standard Commands
-      else {
+      } else {
         switch (cmd) {
           case "help":
             output =
@@ -639,7 +689,8 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
             output = `NAME: ${profileData.name}\nROLE: ${profileData.role}\nLOCATION: ${profileData.location}\nEDUCATION: ${profileData.education}\nFOCUS: React, Django, Full-Stack Web Development`;
             break;
           case "skills":
-            output = profileData.skillsList;
+            // Uses dynamic skills if API fetch succeeded, otherwise uses fallback
+            output = dynamicSkills || profileData.skillsList;
             break;
           case "email":
             output = `Contact Email: ${profileData.email}\nPhone: ${profileData.phone}`;
@@ -656,11 +707,11 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
             break;
           case "neofetch":
             output = `
-       .--------------.      mohammed@kinetic-env
-       |    < / >     |      --------------------
-       |   React.js   |      OS: Web Env v1.0
-       |   Django     |      Host: React DOM
-       '--------------'      Kernel: JavaScript (V8)
+       .--------------.     mohammed@kinetic-env
+       |    < / >     |     --------------------
+       |   React.js   |     OS: Web Env v1.0
+       |   Django     |     Host: React DOM
+       '--------------'     Kernel: JavaScript (V8)
         /============\\       Uptime: ${Math.floor(performance.now() / 1000)}s
       /==============\\       Role: ${profileData.role}
                              Stack: React, Django, Tailwind
@@ -698,20 +749,21 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
     }
   };
 
-  const handleBlogDemo = (e) => {
-    e.preventDefault();
-    setHistory((prev) => [
-      ...prev,
-      {
-        cmd: "curl -O https://blog.kinetic.env",
-        output:
-          "> Resolving host blog.kinetic.env...\n> Connecting to server...\n> Rendering latest articles...\n(Integration coming soon!)",
-      },
-    ]);
-  };
-
   return (
     <section className="min-h-[75vh] flex flex-col justify-center pt-8 sm:pt-16 relative">
+      <style>
+        {`
+          @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+
+          .font-terminal {
+            font-family: 'Share Tech Mono', monospace;
+          }
+          .font-ide {
+            font-family: 'Fira Code', monospace;
+          }
+        `}
+      </style>
+
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[300px] h-[300px] bg-[var(--md-sys-color-primary)]/10 blur-[100px] rounded-full mix-blend-multiply dark:mix-blend-screen pointer-events-none" />
 
@@ -725,11 +777,11 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--md-sys-color-primary)] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--md-sys-color-primary)]"></span>
               </span>
-              <span>{profileData.status}</span>
+              <span className="font-ide">{profileData.status}</span>
             </div>
           </FadeIn>
 
-          <h1 className="text-[3rem] sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem] font-extrabold tracking-tight leading-[1] text-[var(--md-sys-color-on-surface)] mb-6 font-mono transition-colors duration-700">
+          <h1 className="text-[3rem] sm:text-5xl md:text-[3.5rem] lg:text-[4.5rem] font-extrabold tracking-tight leading-[1] text-[var(--md-sys-color-on-surface)] mb-6 font-terminal transition-colors duration-700">
             <span className="block overflow-hidden pb-1">
               <motion.span
                 initial={{ y: "100%" }}
@@ -767,7 +819,7 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
                   ease: [0.25, 1, 0.5, 1],
                   delay: 0.6,
                 }}
-                className="inline-block text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[var(--md-sys-color-on-surface-variant)] opacity-80 font-semibold tracking-normal font-sans"
+                className="inline-block text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[var(--md-sys-color-on-surface-variant)] font-semibold tracking-wide font-sans"
               >
                 {profileData.subRole}
               </motion.span>
@@ -775,7 +827,7 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
           </h1>
 
           <FadeIn delay={400}>
-            <p className="text-base sm:text-lg md:text-xl text-[var(--md-sys-color-on-surface-variant)] max-w-[440px] leading-relaxed mb-6 font-medium">
+            <p className="text-base sm:text-lg md:text-xl text-[var(--md-sys-color-on-surface)] max-w-[480px] leading-relaxed mb-6 font-medium">
               {profileData.bio}
             </p>
           </FadeIn>
@@ -812,7 +864,7 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
               </div>
 
               <div
-                className={`text-[13px] font-semibold ${showDocs ? docColors.text : termColors.text} tracking-wide flex items-center gap-2 transition-colors duration-700`}
+                className={`font-ide text-[12px] font-semibold ${showDocs ? docColors.text : termColors.text} tracking-wider flex items-center gap-2 transition-colors duration-700`}
               >
                 {showDocs ? (
                   <>
@@ -840,7 +892,7 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
               >
                 <div>
                   <h3
-                    className={`text-lg sm:text-xl font-bold ${docColors.text} mb-2`}
+                    className={`text-lg sm:text-xl font-bold ${docColors.text} mb-2 tracking-wide font-terminal uppercase`}
                   >
                     Terminal Commands
                   </h3>
@@ -870,11 +922,11 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
                     ].map((item) => (
                       <div key={item.cmd} className="flex flex-col gap-1.5">
                         <code
-                          className={`font-mono font-bold px-2.5 py-1 rounded-md w-fit bg-[var(--md-sys-color-surface-variant)] ${docColors.primary} border border-[var(--md-sys-color-outline-variant)]`}
+                          className={`font-ide font-bold px-2.5 py-1.5 rounded-md w-fit bg-[var(--md-sys-color-surface-variant)] ${docColors.primary} border border-[var(--md-sys-color-outline-variant)]`}
                         >
                           {item.cmd}
                         </code>
-                        <span className="text-xs">{item.desc}</span>
+                        <span className="text-xs font-medium">{item.desc}</span>
                       </div>
                     ))}
                   </div>
@@ -919,11 +971,11 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
                     ].map((item) => (
                       <div key={item.cmd} className="flex flex-col gap-1.5">
                         <code
-                          className={`font-mono font-bold px-2.5 py-1 rounded-md w-fit bg-[var(--md-sys-color-surface-variant)] ${docColors.primary} border border-[var(--md-sys-color-outline-variant)]`}
+                          className={`font-ide font-bold px-2.5 py-1.5 rounded-md w-fit bg-[var(--md-sys-color-surface-variant)] ${docColors.primary} border border-[var(--md-sys-color-outline-variant)]`}
                         >
                           {item.cmd}
                         </code>
-                        <span className="text-xs">{item.desc}</span>
+                        <span className="text-xs font-medium">{item.desc}</span>
                       </div>
                     ))}
                   </div>
@@ -933,7 +985,7 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
               /* Terminal View */
               <div
                 ref={terminalRef}
-                className={`flex-1 p-5 overflow-y-auto font-mono text-[13px] sm:text-sm ${termColors.textMuted} flex flex-col gap-3 cursor-text scrollbar-thin ${termColors.scrollThumb} scrollbar-track-transparent transition-colors duration-700`}
+                className={`flex-1 p-5 overflow-y-auto font-ide text-[12px] sm:text-[13px] ${termColors.textMuted} flex flex-col gap-3 cursor-text scrollbar-thin ${termColors.scrollThumb} scrollbar-track-transparent transition-colors duration-700`}
                 onClick={() =>
                   document.getElementById("terminal-input")?.focus()
                 }
@@ -956,7 +1008,7 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
                           ~
                         </span>
                         <span
-                          className={`${termColors.text} transition-colors duration-700`}
+                          className={`${termColors.text} font-medium transition-colors duration-700`}
                         >
                           {entry.cmd}
                         </span>
@@ -964,7 +1016,7 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
                     )}
                     {entry.output && (
                       <div
-                        className={`${termColors.textMuted} leading-relaxed transition-colors duration-700`}
+                        className={`${termColors.textMuted} font-medium leading-relaxed tracking-wide transition-colors duration-700`}
                       >
                         {entry.output}
                       </div>
@@ -990,7 +1042,7 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleCommand}
-                    className={`flex-1 bg-transparent outline-none ${termColors.text} font-mono ${termColors.placeholder} transition-colors duration-700 w-full`}
+                    className={`flex-1 bg-transparent outline-none ${termColors.text} font-ide font-medium ${termColors.placeholder} tracking-wide transition-colors duration-700 w-full`}
                     autoComplete="off"
                     spellCheck="false"
                     autoFocus
@@ -1010,22 +1062,27 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
         <a
           href="#projects"
           onClick={() => scrollTo("#projects")}
-          className="adw-btn adw-btn-primary w-full sm:w-1/2 group flex items-center justify-center gap-3 px-4 py-4 text-sm sm:text-base whitespace-nowrap cursor-pointer"
+          className="adw-btn adw-btn-primary w-full sm:w-1/2 group flex items-center justify-center gap-3 px-4 py-4 text-sm sm:text-base font-bold whitespace-nowrap cursor-pointer tracking-wide"
         >
           <BookOpen className="w-5 h-5 shrink-0 group-hover:-translate-y-1 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" />
-          <span>View My Projects</span>
+          <span className="font-ide uppercase tracking-wider">
+            View My Projects
+          </span>
         </a>
         <a
           href={profileData.github}
           target="_blank"
           rel="noreferrer"
-          className="adw-btn adw-btn-secondary bg-transparent border-2 w-full sm:w-1/2 flex items-center justify-center gap-3 px-4 py-4 text-sm sm:text-base hover:bg-[var(--md-sys-color-surface-variant)] whitespace-nowrap cursor-pointer"
+          className="adw-btn adw-btn-secondary bg-transparent border-2 w-full sm:w-1/2 flex items-center justify-center gap-3 px-4 py-4 text-sm sm:text-base font-bold hover:bg-[var(--md-sys-color-surface-variant)] whitespace-nowrap cursor-pointer tracking-wide"
         >
           <GitBranch className="w-5 h-5 shrink-0 group-hover:scale-110 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" />
-          <span>GitHub Profile</span>
+          <span className="font-ide uppercase tracking-wider">
+            GitHub Profile
+          </span>
         </a>
       </FadeIn>
     </section>
   );
 };
+
 export default HeroSection;

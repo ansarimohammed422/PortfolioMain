@@ -565,6 +565,7 @@ const profileData = {
   phone: "+91 9326797184",
   linkedin: "https://www.linkedin.com/in/mohammed-ansari-690524266",
   github: "https://github.com/ansarimohammed422",
+  X: "https://x.com/ItMomdy",
   location: "Mumbai, Maharashtra",
   education: "B.Sc in Information Technology",
   skillsList:
@@ -778,7 +779,7 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
             break;
           case "twitter":
           case "x":
-            output = "Twitter/X: Not currently active on this frequency.";
+            output = `Twitter/X: ${profileData.X}`;
             break;
           case "neofetch":
             output = `

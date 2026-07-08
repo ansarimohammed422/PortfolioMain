@@ -318,7 +318,7 @@ const DecryptionCard = ({ project, isOffline }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       // Added subtle offline border tint
-      className={`relative h-[400px] sm:h-[450px] rounded-2xl overflow-hidden border ${isOffline ? "border-red-500/20" : "border-[var(--md-sys-color-outline-variant)]"} cursor-pointer group transition-all duration-700 ${isHovered ? "bg-[var(--md-sys-color-surface)] shadow-2xl scale-[1.02]" : "bg-[#0a0f0a] scale-100"}`}
+      className={`relative h-[400px] sm:h-[450px] rounded-2xl overflow-hidden border ${isOffline ? "border-[#626950]/20" : "border-[var(--md-sys-color-outline-variant)]"} cursor-pointer group transition-all duration-700 ${isHovered ? "bg-[var(--md-sys-color-surface)] shadow-2xl scale-[1.02]" : "bg-[#21231b] scale-100"}`}
     >
       <img
         src={project.img}

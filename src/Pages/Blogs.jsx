@@ -935,14 +935,14 @@ const BlogReader = ({ blog, onClose }) => (
             code: ({ node, inline, className, children, ...props }) => {
               const match = /language-(\w+)/.exec(className || "");
               return !inline ? (
-                <div className="rounded-xl overflow-hidden mb-6 border border-[#3A4A2B] bg-[#0E120A] shadow-lg">
-                  <div className="bg-[#161D10] px-4 py-2 text-[10px] font-terminal uppercase tracking-widest text-[#A5D27E] flex items-center gap-2 border-b border-[#3A4A2B]">
+                <div className="rounded-xl overflow-hidden mb-6 border border-[#626950] bg-[#21231b] shadow-lg">
+                  <div className="bg-[#414635] px-4 py-2 text-[10px] font-terminal uppercase tracking-widest text-[#b3bb9d] flex items-center gap-2 border-b border-[#626950]">
                     <Terminal className="w-3 h-3" />{" "}
                     {match ? match[1] : "CODE_BLOCK"}
                   </div>
                   <pre className="p-5 overflow-x-auto">
                     <code
-                      className="font-ide text-sm sm:text-base text-[#E3EAD8] leading-relaxed block"
+                      className="font-ide text-sm sm:text-base text-[#e4eacf] leading-relaxed block"
                       {...props}
                     >
                       {children}

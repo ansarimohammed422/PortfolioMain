@@ -279,7 +279,7 @@ const ContactSection = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-[#050805] p-8 font-ide text-[var(--md-sys-color-primary)] flex flex-col justify-center border border-[var(--md-sys-color-primary)]/30"
+                    className="absolute inset-0 bg-[#21231b] p-8 font-ide text-[var(--md-sys-color-primary)] flex flex-col justify-center border border-[var(--md-sys-color-primary)]/30"
                   >
                     <div className="flex-1 flex flex-col gap-4 justify-center">
                       {log.map((line, i) => (

@@ -611,28 +611,28 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
   // Inverse M3E Theme Mapping for Terminal
   const termColors = isDarkMode
     ? {
-        surface: "bg-[#F4F6E9]",
-        surfaceVariant: "bg-[#E2E6D5]",
-        border: "border-[#C6CAB9]",
-        text: "text-[#131410]",
-        textMuted: "text-[#2E3128]",
-        primary: "text-[#435033]",
-        secondary: "text-[#161F0A]",
-        placeholder: "placeholder:text-[#5E6355]",
-        scrollThumb: "scrollbar-thumb-[#C6CAB9]",
-        btnHover: "hover:bg-[#C6CAB9]",
+        surface: "bg-[#e4eacf]",
+        surfaceVariant: "bg-[#ccd3b6]",
+        border: "border-[#b3bb9d]",
+        text: "text-[#21231b]",
+        textMuted: "text-[#414635]",
+        primary: "text-[#626950]",
+        secondary: "text-[#21231b]",
+        placeholder: "placeholder:text-[#828b6a]",
+        scrollThumb: "scrollbar-thumb-[#b3bb9d]",
+        btnHover: "hover:bg-[#b3bb9d]",
       }
     : {
-        surface: "bg-[#0E120A]",
-        surfaceVariant: "bg-[#25301B]",
-        border: "border-[#3A4A2B]",
-        text: "text-[#F4F6E9]",
-        textMuted: "text-[#D3DAC6]",
-        primary: "text-[#A5D27E]",
-        secondary: "text-[#C2F098]",
-        placeholder: "placeholder:text-[#A1AD8E]",
-        scrollThumb: "scrollbar-thumb-[#3A4A2B]",
-        btnHover: "hover:bg-[#2A361F]",
+        surface: "bg-[#21231b]",
+        surfaceVariant: "bg-[#414635]",
+        border: "border-[#626950]",
+        text: "text-[#e4eacf]",
+        textMuted: "text-[#ccd3b6]",
+        primary: "text-[#b3bb9d]",
+        secondary: "text-[#e4eacf]",
+        placeholder: "placeholder:text-[#9ba384]",
+        scrollThumb: "scrollbar-thumb-[#626950]",
+        btnHover: "hover:bg-[#626950]",
       };
 
   const docColors = {
@@ -952,7 +952,7 @@ const HeroSection = ({ scrollTo, isDarkMode }) => {
               </div>
 
               <div className="flex-1 flex items-center justify-end">
-                <div className="p-1.5 rounded-full hover:bg-[#cc3333] hover:text-white transition-colors cursor-pointer ml-1 flex items-center justify-center group/close">
+                <div className="p-1.5 rounded-full hover:bg-[#626950] hover:text-[#e4eacf] transition-colors cursor-pointer ml-1 flex items-center justify-center group/close">
                   <X
                     className={`w-4 h-4 ${showDocs ? docColors.textMuted : termColors.textMuted} transition-colors duration-700 group-hover/close:text-white`}
                   />

@@ -1,37 +1,37 @@
 @import "tailwindcss";
 :root {
-    --md-sys-color-background: #fafbef;
-    --md-sys-color-surface: #f4f6e9;
-    --md-sys-color-surface-variant: #e2e6d5;
-    --md-sys-color-outline: #757a6b;
-    --md-sys-color-outline-variant: #c6cab9;
-    --md-sys-color-primary: #435033;
-    --md-sys-color-on-primary: #ffffff;
-    --md-sys-color-primary-container: #cee7b4;
-    --md-sys-color-on-primary-container: #161f0a;
-    --md-sys-color-secondary-container: #dfe8cc;
-    --md-sys-color-on-secondary-container: #1c2311;
-    --md-sys-color-tertiary-container: #e7eedb;
-    --md-sys-color-on-tertiary-container: #232a19;
-    --md-sys-color-on-surface: #1b1c16;
-    --md-sys-color-on-surface-variant: #44493c;
+    --md-sys-color-background: #e4eacf;
+    --md-sys-color-surface: #ccd3b6;
+    --md-sys-color-surface-variant: #b3bb9d;
+    --md-sys-color-outline: #626950;
+    --md-sys-color-outline-variant: #828b6a;
+    --md-sys-color-primary: #414635;
+    --md-sys-color-on-primary: #e4eacf;
+    --md-sys-color-primary-container: #b3bb9d;
+    --md-sys-color-on-primary-container: #21231b;
+    --md-sys-color-secondary-container: #ccd3b6;
+    --md-sys-color-on-secondary-container: #21231b;
+    --md-sys-color-tertiary-container: #b3bb9d;
+    --md-sys-color-on-tertiary-container: #21231b;
+    --md-sys-color-on-surface: #21231b;
+    --md-sys-color-on-surface-variant: #414635;
 }
 .dark {
-    --md-sys-color-background: #0e120a;
-    --md-sys-color-surface: #161d10;
-    --md-sys-color-surface-variant: #3a4a2b;
-    --md-sys-color-outline: #8b997a;
-    --md-sys-color-outline-variant: #3a4a2b;
-    --md-sys-color-primary: #a5d27e;
-    --md-sys-color-on-primary: #1a2d08;
-    --md-sys-color-primary-container: #2e4515;
-    --md-sys-color-on-primary-container: #c2f098;
-    --md-sys-color-secondary-container: #394b25;
-    --md-sys-color-on-secondary-container: #d8f2b8;
-    --md-sys-color-tertiary-container: #2b3d1b;
-    --md-sys-color-on-tertiary-container: #bdd1a8;
-    --md-sys-color-on-surface: #e3ead8;
-    --md-sys-color-on-surface-variant: #c3ccb6;
+    --md-sys-color-background: #21231b;
+    --md-sys-color-surface: #21231b;
+    --md-sys-color-surface-variant: #414635;
+    --md-sys-color-outline: #828b6a;
+    --md-sys-color-outline-variant: #626950;
+    --md-sys-color-primary: #b3bb9d;
+    --md-sys-color-on-primary: #21231b;
+    --md-sys-color-primary-container: #414635;
+    --md-sys-color-on-primary-container: #e4eacf;
+    --md-sys-color-secondary-container: #626950;
+    --md-sys-color-on-secondary-container: #e4eacf;
+    --md-sys-color-tertiary-container: #414635;
+    --md-sys-color-on-tertiary-container: #ccd3b6;
+    --md-sys-color-on-surface: #e4eacf;
+    --md-sys-color-on-surface-variant: #ccd3b6;
 }
 html {
     scroll-behavior: smooth;

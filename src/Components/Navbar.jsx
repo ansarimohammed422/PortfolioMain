@@ -234,7 +234,7 @@ const Navbar = ({
             className="flex items-center gap-2 text-[var(--md-sys-color-on-surface-variant)] group cursor-pointer"
             onClick={() => scrollTo("#top")}
           >
-            <Terminal className="w-5 h-5 text-[var(--md-sys-color-primary)]" />
+            <img src="/PortLOGO.png" alt="Logo" className="h-6 w-auto sm:h-8 object-contain" />
             <span className="font-terminal font-bold tracking-tighter text-xl text-[var(--md-sys-color-on-surface)]">
               Mohammed Ansari
             </span>
